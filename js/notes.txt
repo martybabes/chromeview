@@ -1,0 +1,179 @@
+CSS Specifity
+ highest                             lowest
+[Style Attr],[  ID   ],[  Class  ],[Elements]
+
+* (universal select) has value 0 0 0 0)
+
+---------------------------------------
+
+fdiv.className = bgClass + " midcenter"; 
+
+fp.className = fontheightClass + " " + fontwidthClass + " " + textClass + " txtcenter";
+
+CI: selector id's:
+<div> selbgcolor seltxtpos,
+<p>	  selwidth seltxtlayout seltxtcolor seltxtsize seltxtface,
+#	  selbgimage
+CI:bgblack midcenter,txtcenter txtwhite fontYnormal fontXnarrow,#
+
+var selectors = {selbgcolor:"bgblack", seltxtpos:"midcenter",
+	selwidth:"", seltxtlayout:"txtcenter", seltxtcolor:"txtwhite",
+	seltxtsize:"fontYnormal", seltxtface:"fontXnarrow",
+	selbgimage:"#"};
+	
+var selectors = [selbgcolor:0  seltxtpos:1,
+  	selwidth:2 seltxtlayout:3 seltxtcolor:4
+	  seltxtsize:5 seltxtface:6,selbgimage:7]
+	
+
+
+
+Text markup elements and classes to use in text file
+=========================================================
+Inline elements:
+<H1>	Droid Serif bold slightly larger
+<H2>	Droid Serif bold normal
+<H3>	Droid Serif normal
+(Note: block elements add a line break)
+
+<VAR>	Droid Serif normal
+<EM>	Roboto Black
+<STRONG>	Roboto Slab
+<MARK>	white on blue background
+<SMALL>	make text 10% smaller
+
+
+// Loop Forever -- if filename supplied, load a media file.
+LF:   //filename or '' or '#'
+//TextLeft
+TL: (no parms) Sets text to left instead of centre
+//Background Foreground
+BF:color images/backgroundImageFile
+  (no comma, 1 space)
+where color is
+	1. a CSS color name (eg. 'white')
+	2. a CSS #number (eg. '#ffffff' or '#fff')
+	3. 'notext' meaning text is hidden
+BF:.class backgroundImageFile
+where .class is
+	1. a colorclass (must start with period eg '.whiteinblack')
+	2. '.notext' meaning text is hidden
+
+	included are ('midcenter txtmid fontheight fontwidth')
+
+BF: DEFAULTS
+	var fontheightClass = "fontYnormal";/small
+	var fontwidthClass = "fontXnormal";/narrow
+	var textClass = "txtwhite";/black
+	var bgClass = "bgblack";/white
+
+//Classes Image
+CI:<DIV>classes,<P>classes,# or backgroundImageFile
+	# = no background file
+	(Note: no spaces at commas)
+CI: no defalts
+
+<DIV> classes
+================
+bgimage ,images/backgroundImageFile
+	(CSS- background-size: 100% 100%; background-repeat:no-repeat)
+bgtile ,images/backgroundImageFile
+	(CSS-  background-repeat:repeat)
+
+<DIV> Background color classes
+------------------------
+bgblack
+bgwhite
+bgcornsilk
+bgmaroon
+bgtan
+bgfabric  (uses resource file)
+bgpaper	  (uses resource file)
+
+<DIV> vertical/horiz text position
+--------------------
+midleft
+midcenter	(default placement)
+midright
+topleft
+topcenter
+topright
+botleft
+botcenter
+botright
+
+
+<P>Font classes
+==============
+fontYnormal  (8 lines - see settings)
+fontYsmall (10 lines)
+
+fontXnormal	(like Arial - use with 16:9)
+fontXnarrow	(like Arial Narrow - use with 4:3)
+
+fontserif	(like Georgia)
+fontblack	(like Arial Black)
+fontslab	(like Impact)
+
+<P>Text justify/margin
+----------------
+txtcenter 	(no margin)
+txtleft		(small margin)
+txtright	(small margin)
+txt75pc
+txt66pc
+txt50pc
+
+//txt75left  (25% right margin - use with bgall)
+//txt75right (25% left margin - use with bgleft25)
+//txt66right (33% left margin - use with bgleft25)
+//txt50left  (use with bgall)
+//txt50right (use with bgleft50)
+
+<P>Normal Text color classes
+-------------------------
+notext		(visibility: hidden)
+txtwhite
+txtblack
+txtcornsilk
+txtlime
+
+<P>Outlined Text color classes 
+---------------------------
+whiteinblack  (black outline)
+whiteinnavy
+blackinwhite  (white outline)
+blackincornsilk
+greeninblack
+blackingreen
+
+
+findAspect(v) 
+ var XtoYarr[x,y,z];
+  for (var i = 0; i < XtoYarr.length; i++) {
+    if (v > arr[0,i] && v <= arr[1,i]) { return arr[2,i];
+    }
+  }
+  return "---?!"
+}
+
+//<0.45 ---!   <=0.47
+1:2    0.5  >0.47 0.54 
+9:16   0.56 >0.54 0.65
+2:3    0.67 >0.65 0.74
+3:4    0.75 >0.74 0.9
+1:1    1.00 >0.9 1.02
+16:15  1.07 >1.02 1.12
+16:14  1.14 >1.12 1.21
+16:13  1.23 >1.21 1.31
+4:3    1.33  >1.31 1.43
+16:11  1.45  >1.43 1.49
+3:2    1.50  >1.49 1.58
+16:10  1.60  >1.58 <=1.74
+16:9   1.77  >1.74 <=1.95
+2:1    2.00  >1.95
+21:9   2.33  >2.28 2.4
+
+//>2.4   ---!  >2.4
+
+
