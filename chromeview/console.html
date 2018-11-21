@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Song Console</title>
+  <!--meta name="viewport" content="width=device-width, initial-scale=1"-->
+	<link rel="stylesheet" href="resources/console.css">
+	<!--link rel="stylesheet"  href="resources/portrait.css"-->
+	<link rel="stylesheet" media="screen and (max-width: 1559px) and (orientation: landscape)" href="resources/landsmall.css">
+	<link rel="stylesheet" media="screen and (min-width: 1560px) and (orientation: landscape)" href="resources/portland.css">
+	<link rel="stylesheet" media="screen and (min-height: 1500px) and (orientation: portrait)" href="resources/portland.css">
+	<link rel="stylesheet" media="screen and (min-height: 700px) and (orientation: portrait)" href="resources/landsmall.css">
+
+  <link rel="stylesheet" type="text/css" href="resources/common.css"> 
+	<!-- "resources/consolegreen.css"  added to jqueryui -->
+  <link id="id-theme" rel="stylesheet" href="resources/jquery-ui-green.css">
+
+	</head>
+<body>
+
+<article>
+  <div id="id-mainheading" class="mainheading">
+    <!--span id="id-hideHeading" style="font-size:10px; vertical-align:text-top" title="click to hide heading">x </span-->
+    Song Viewer
+  </div>
+  <!--div id="id-consoleaccordion"-->
+  <p><i id="id-showconsole" class="material-icons" title="click to toggle Screen">&#xE428;</i>
+    <span class="smallheading">Console Screen<span class="space" style="width:100px"></span>
+    <button id="id-choose_dir" class="ui-state-default ui-widget ui-corner-all">Choose Folder</button>
+    <span class="basicfont">Path: <span id="id-rootpath"></span></span></span></p>
+    <!--button id="id-showconsole" class="ui-icon ui-icon-arrowthick-2-ne-sw" title="click to toggle Screen"></button-->
+    <div id="id-loading">
+      Getting filelist - if this message hangs around set root folder path: [Choose Folder] button.<br>
+      See Help [?] tab for more info. :-)
+      <!--img id="id-loading-image" src="resources/ajaxloader.gif" alt="Loading..." /-->
+    </div>
+      <hr>
+   <div id="id-consolescreen">   
+    <div id="id-myscreen"><!-- insert screen inside of this element-->
+      <div id="id-screen" class="preview"><span class="smallheading">Console Screen</span></div>
+    </div>
+  </div>
+  <section id="id-s_transport">
+    <hr>
+    <!--p>
+      <button id="id-showsplashscr">Splash Scr</button>&nbsp;<button id="id-showblankscr">Blank Scr</button>
+      <button id="id-showselectedsong">View Song</button></p-->
+  	  <!--button id="id-nextitem" title="Next item in program">&gt;</button-->
+
+    <ul id="id-icons" class="ui-widget ui-helper-clearfix">
+      <li id="id-nextitem" class="ui-state-default ui-corner-all" title="View next item">
+          &nbsp;<i class="material-icons">&#xE5D4;</i>&nbsp;<i class="material-icons">&#xE890;</i>&nbsp;
+      <!--span class="ui-icon ui-icon-arrowreturnthick-1-e"></span><span class="ui-icon ui-icon-video"></span--></li>
+      <li id="id-showsplashscr" class="ui-state-default ui-corner-all" title="Splash Scr">  
+          &nbsp;<i class="material-icons">&#xE432;</i>&nbsp;<!--span class="ui-icon ui-icon-image"></span--></li>
+      <li id="id-showblankscr" class="ui-state-default ui-corner-all" title="Blank Scr">
+          &nbsp;<i class="material-icons">&#xE63B;</i>&nbsp;<!--span class="ui-icon ui-icon-radio-off"></span--></li>
+
+      <li id="id-showtitleinfo" class="ui-state-default ui-corner-all" title="Title Scr">
+          &nbsp;<i class="material-icons">&#xE8CD;</i>&nbsp;<!--span class="ui-icon ui-icon-comment"></span--></li>
+      <li id="id-nextscr" class="ui-state-default ui-corner-all" iconPosition="end" title="Next screen in 'Order'">
+          &nbsp;&nbsp;<i class="material-icons">&#xE038;</i>&nbsp;&nbsp; <!--span class="ui-icon ui-icon-circle-triangle-e" ></span--></li>
+      <li id="id-screenorder" style="cursor:default"> Order: <span style="display:inline-block; min-width:150px"></span></li>
+    
+      <li id="id-tostart" class="ui-state-default ui-corner-all" title="To start">
+          &nbsp;<i class="material-icons">&#xE045;</i>&nbsp;<!--span class="ui-icon ui-icon-seek-first"></span--></li>
+    	<li id="id-play" class="ui-state-default ui-corner-all" title="Play">
+          &nbsp;<i class="material-icons">&#xE037;</i>&nbsp;<!--span class="ui-icon ui-icon-play"></span--></li>
+    	<li id="id-pause" class="ui-state-default ui-corner-all" title="Pause">
+          &nbsp;<i class="material-icons">&#xE034;</i>&nbsp;<!--span class="ui-icon ui-icon-pause"></span--></li>
+    	<li id="id-forward" class="ui-state-default ui-corner-all" title="Fwd 10 secs">
+          &nbsp;<i class="material-icons">&#xE056;</i>&nbsp;<!--span class="ui-icon ui-icon-seek-next"--></span></li>
+    </ul>
+    <hr>
+    <div id="id-player" style="display:none">
+  	  <audio id="id-audioplayer" controls preload="none">
+  		<source id="id-mp3src" src="#" type="audio/mpeg">
+  	  Your browser doesn't support the &lt;audio&gt; tag.
+  	 </audio>
+   	</div>
+
+  </section>
+
+  <p><i id="id-shownotepad" class="material-icons" title="click to toggle Notepad">&#xE428;</i>
+    <!--button id="id-shownotepad" class="ui-icon ui-icon-arrowthick-2-ne-sw" title="click to toggle Notepad "></button-->
+    <span class="smallheading">Notepad/Song Editor</span></p>
+  <hr>
+  <div id="id-editor">
+    <input type="file" id="id-notefile"  accept="text/*"><br>
+    <div class="sideline"></div>
+    <textarea id="id-notearea" class="edtext">Load or add notes here.
+To save:  copy and paste into Notepad.</textarea>
+<!-- song loaded in this hidden textarea -->
+    <div style="display:inline-block; vertical-align:top;">
+    <div id="id-edratio" style="display:block"><h2>Editor style:</h2>
+  	  <br><input type="radio" id="id-edtext" name="edratio" checked="checked"><label for="edtext">Note</label>
+      <!-- change to fontXYnormal-->
+  	  <br><input type="radio" id="id-edXnormal" name="edratio"><label for="edXnormal">16:9 </label>
+      <!-- change to fontXYnarrow-->
+  	  <br><input type="radio" id="id-edXnarrow" name="edratio"><label for="edXnarrow">4:3 </label>
+    </div>&nbsp;<br>
+    <div id="id-edsize" style="display:block"><h2>Editor font:<br>(16:9/4:3)</h2>
+  	  <br><input type="radio" id="id-edYnormal" name="edsize" checked="checked"><label for="edYnormal">Normal (8)</label>
+      <!-- change to fontXYnormal-->
+  	  <br><input type="radio" id="id-edYsmall" name="edsize"><label for="edYsmall">Small (10)</label>
+      <!-- change to fontXYnarrow-->
+  	  <!--br><input type="radio" id="id-edYsmallest" name="edsize"><label for="edYsmallest">12)Smallest</label-->
+    </div>
+    </div>
+  <!--/div-->
+  </div>
+</article>
+
+<aside>
+    <div id="id-headcontrols">
+      <p><span class="smallheading">Select Song</span></p>
+      <p><input type="checkbox" id="id-showtitle" name="showtitle" checked="checked"><label for="showtitle">show title</label>
+        <input type="checkbox" id="id-karaoke" name="karaoke" checked="checked"><label for="karaoke">karaoke</label>
+        <input type="checkbox" id="id-immediate" name="immediate"><label for="immediate">play immediately</label></p>
+      <p><img id="id-showAllImg" title="toggle songs with/out music" src="resources/xfiletxt.png"/>
+        <input type="text" id="id-autocomplete" title="type letters for quick search">
+        <button id="id-showselectedsong">View Song</button>
+        <!--div id="a_space" class="space" ></div--><button id="id-showlist" class="ui-state-default ui-widget ui-corner-all">Show/hide list</button>
+      </p>
+    </div>
+  
+    <section id="id-s_selection">
+    <div id="id-seltabs">
+      <ul>
+        <li><a id="id-tab-0" href="#id-table-0">-</a></li>
+        <li><a id="id-tab-1" href="#id-table-1">-</a></li>
+        <li><a id="id-tab-2" href="#id-table-2">-</a></li>
+        <li><a id="id-tab-3" href="#id-table-3">-</a></li>
+        <li><a id="id-tab-4" href="#id-table-4">-</a></li>
+        <li><a id="id-tab-5" href="#id-table-5">-</a></li>
+        <li><a id="id-tab-6" href="#id-table-6">-</a></li>
+        <li><a id="id-tab-7" href="#id-table-7">-</a></li>
+        <li><a id="id-tab-8" href="#id-table-8">-</a></li>
+        <li><a id="id-tab-9" href="#id-table-9">-</a></li>
+      </ul>
+      <div id="id-songlist">	
+        <ul id="id-table-0"></ul>
+        <ul id="id-table-1"></ul>
+        <ul id="id-table-2"></ul>
+        <ul id="id-table-3"></ul>
+        <ul id="id-table-4"></ul>
+        <ul id="id-table-5"></ul>
+        <ul id="id-table-6"></ul>
+        <ul id="id-table-7"></ul>
+        <ul id="id-table-8"></ul>
+        <ul id="id-table-9"></ul>
+      </div>
+    </div>
+    </section>
+  
+    <section id="id-s_previewtables">
+    <div id="id-prevtabs">
+      <ul>
+        <li><a id="id-programtab" href="#id-progblock">Program</a></li>
+        <li><a id="id-previewtab" href="#id-prevblock">Preview</a></li>
+        <li><a id="id-timingstab" href="#id-timesblock">Times</a></li>
+        <li><a id="id-settingstab" href="#id-settingsblock">Settings</a></li>
+        <li><a id="id-helpstab" href="#id-helpsblock">&nbsp;?&nbsp;</a></li>
+      </ul>
+      
+      <div id="id-progblock">
+        <p>Append: <button id="id-addselectedsong"><i class="material-icons">&#xE063;</i></button>
+          <button id="id-addsplash"><i class="material-icons">&#xE432;</i></button>
+          <button id="id-addblank" title="add to program"><i class="material-icons">&#xE63B;</i></button>
+          <button id="id-choose_image" title="select image to add to program"><i class="material-icons">&#xE3B0;</i></button>
+          <button id="id-choose_video" title="select MP4 video to add to program"><i class="material-icons">&#xE04B;</i></button>
+          <br>
+          <span id="id-img_error"></span></p>
+        <table id="id-programme">
+          <thead>
+          <tr>
+            <th style="width:50px">Mode</th>
+            <th style="width:300px">Item (<span id="id-progitem">0</span>) &nbsp;
+              <button id="id-prgreset" title="Reset program to start">Reset</button>&nbsp;&nbsp;&nbsp;
+              <button id="id-editprog" title="open program editor">Edit</button></th>
+          </tr>
+          </thead>
+          <tbody id="id-progbody">
+          </tbody>
+        </table>
+      
+      </div>
+      <div id="id-progeditblock">
+        <p> <input type="file" id="id-progfile">
+          <button id="id-updateprog" title="Copy list back to program">Update</button>
+          <button id="id-canceledit" title="Cancel edit">Cancel</button><br>
+          To save:  copy and paste into Notepad.</p>
+        <p><textarea id="id-progeditarea">some text</textarea></p>
+      </div>
+      <div id="id-prevblock">
+        <div id="id-previewtable">
+          <div class="previewrow">
+            <div id="id-titleinfo" class="cellleft" title="">
+              <div id="id-title" class="title titlegreen">Title</div>
+              <div id="id-info" class="info infogreen">Info</div>
+            </div>
+            <div id="id-ptd5" class="cellright" title="5"><div class="songtext">scr5</div></div>
+          </div>
+          <div class="previewrow">
+            <div id="id-ptd1" class="cellleft" title="1"><div class="songtext">scr1</div></div>
+            <div id="id-ptd6" class="cellright" title="6"><div class="songtext">scr6</div></div>
+          </div>
+          <div class="previewrow">
+            <div id="id-ptd2" class="cellleft" title="2"><div class="songtext">scr2</div></div>
+            <div id="id-ptd7" class="cellright" title="7"><div class="songtext">scr7</div></div>
+            </div>
+          <div class="previewrow">
+            <div id="id-ptd3" class="cellleft" title="3"><div class="songtext">scr3</div></div>
+            <div id="id-ptd8" class="cellright" title="8"><div class="songtext">scr8</div></div>
+          </div>
+          <div class="previewrow">
+            <div id="id-ptd4" class="cellleft" title="4"><div class="songtext">scr4</div></div>
+            <div id="id-ptd9" class="cellright" title="9"><div class="songtext">scr9</div></div>
+          </div>                      
+        </div> <!-- end preview table -->	
+        
+  
+  
+        <!--table id="id-previewtable">
+        <tr>
+          <td id="id-titleinfotd" class="songtext">
+            <div id="id-titleinfo">
+              <div id="id-title" class="title">Title</div>
+              <div id="id-info" class="info">Info</div>
+            </div></td>   <td id="id-ptd5" title="5"><div class="songtext">scr5</div></td>
+        </tr>
+        <tr>
+          <td id="id-ptd1" title="1"><div class="songtext">scr1</div></td><td id="id-ptd6" title="6"><div class="songtext">scr6</div></td>
+        </tr>
+        <tr>
+          <td id="id-ptd2" title="2"><div class="songtext">scr2</div></td><td id="id-ptd7" title="7"><div class="songtext">scr7</div></td>
+        </tr>
+        <tr>
+          <td id="id-ptd3" title="3"><div class="songtext">scr3</div></td><td id="id-ptd8" title="8"><div class="songtext">scr8</div></td>
+        </tr>
+        <tr>
+          <td id="id-ptd4" title="4"><div class="songtext">scr4</div></td><td id="id-ptd9" title="9"><div class="songtext">scr9</div></td>
+        </tr>
+        </table-->
+      </div>
+      
+      <div id="id-timesblock">
+        <div id="id-timesresblock"   style="display:none">
+        Open &quot;viewtimings.htm&quot; in yout browser. Load your song and edit the screen timings.<br>
+        Add the resultant line of timings to the top of your song (lyrics) file. 
+<!--        Screen Order: <input id="id-timesorder" type="text"><button id="id-timesorderupdate">Update&gt;</button><br>
+        <button id="id-updatetimesresult">Result&gt;</button> (copy this into 1st line of song file).
+        <input id="id-timesresult" type="text" style="width:300px"><br>
+-->         </div>
+        <table id="id-timestable">
+          <thead>
+          <tr>
+            <th style="width:16%">Time</th>
+            <th style="widows: 7%;">Scr</th>
+            <th><input id="id-playpos" class="scrtime" disabled>&nbsp;&nbsp;&nbsp; Line of verse &nbsp;&nbsp;&nbsp;&nbsp;
+            <button id="id-edittimings">EDITOR</button>
+            </th>
+          </tr>
+          </thead>
+          <tbody id="id-timesbody">
+          </tbody>
+        </table>  
+      </div>
+      <div id="id-settingsblock" >
+        <button id="id-btnsettings"><img title="Show/hide View Settings" src="resources/xsettings.png" /> Show/Hide settings</button><br>
+        <form id="id-settings">
+          <h3>Theme Color</h3>
+          <div id="id-themecolor">
+            <input type="radio" id="id-themegreen" name="radio10"checked="checked"><label for="themegreen">Green</label>
+            <input type="radio" id="id-themeblue" name="radio10"><label for="themeblue">Blue</label>
+          </div> <input type="checkbox" id="id-plainti" name="plainti"><label for="plainti">Plain Title/Info</label>
+          <h3>Screen Ratio</h3>
+          <div id="id-fontwidth">
+            <input type="radio" id="id-fontXnormal" name="radio0"checked="checked"><label for="fontXnormal">Normal 16:9</label>
+            <input type="radio" id="id-fontXnarrow" name="radio0"><label for="fontXnarrow">Narrow 4:3</label>
+          </div>
+          <h3>Font Height/lines</h3>
+          <div id="id-fontheight">
+            <input type="radio" id="id-fontYnormal" name="radio1"checked="checked"><label for="font8">Normal (8)</label>
+            <input type="radio" id="id-fontYsmall" name="radio1"><label for="font10">Small (10)</label>
+            <!--input type="radio" id="id-fontYsmallest" name="radio1"><label for="font10">Smallest/10</label-->
+          </div>
+          <h3>Font Face</h3>
+          <div id="id-fontface">
+            <input type="radio" id="id-normal" name="radio1"checked="checked"><label for="fontplain">Plain</label>
+            <input type="radio" id="id-rounded" name="radio1"><label for="fontround">Rounded</label>
+            <!--input type="radio" id="id-fontYsmallest" name="radio1"><label for="font10">Smallest/10</label-->
+          </div>
+          <h3>Splash Image, Lyrics Background/Text Color</h3>
+          <select id="id-splashimage">
+            <option value="splash">splash</option>
+            <!-- <option value="images/splash1.jpg">splash1</option>
+            <option value="images/splash2.jpg">splash2</option> -->
+            <option value="choose">choose</option>
+          </select>
+          <select id="id-backgroundimage">
+            <option value="bgblack">black</option>
+            <option value="bg1">DkGreen</option>
+            <option value="bg2">DkPurple</option>
+            <option value="bg3">|Blue</option>
+            <option value="bg4">|White</option>
+            <option value="bgfabric">Fabric</option>
+            <option value="bgpaper">Paper</option>
+            <option value="bgnavy">Navy</option>
+            <option value="bgwhite">White</option>
+            <option value="bgtan">Tan</option>
+            <option value="choose">choose</option>
+          </select>
+          <select id="id-lyricscolour">
+            <option value="txtwhite">white</option>
+            <option value="txtblack">black</option>
+            <option value="txtcornsilk">corn</option>
+            <option value="txtlime">lime</option>
+            <option value="txtwhiteinblack">white>bl</option>
+            <option value="txtwhiteinnavy">white>navy</option>
+            <option value="txtcornsilkinblack">corn>black</option>
+            <option value="txtgreeninblack">green>bl</option>
+            <option value="txtblackinwhite">black>wh</option>
+            <option value="txtblackincornsilk">black>corn</option>
+            <option value="txtblackingreen">bl>green</option>
+            <option value="txtnavyinwhite">navy>white</option>
+          </select>
+          
+          <!--input type="text" id="id-backgroundimage" title="background image file"-->
+          <p>&nbsp</p>
+          <p><button id="id-savesettings">Save Settings</button></p>
+          <p>&nbsp</p>
+          <!--input id="id-show_all" type="checkbox" checked>Show All-->
+        </form>
+        
+        <button id="id-btnbuilder"><img title="Show/hide CI Builder" src="resources/xsettings.png" /> Show/Hide CI Builder</button><br>
+        <form id="id-builder">
+        <h3>'CI:' Builder</h3>      
+<textarea id="id-testnotearea" class="testtext"><strong>CI: builder</strong>
+<small>(when 'FB:' doesn't do the job)</small>
+<h3>Create the layout you want for a
+verse using the selectors below.</h3>
+Click [>] to preview.
+<small>(copy result above the verse
+it is to be used for)</small>
+  </textarea><img id="id-btnupdate" title="Test 'CI:' builder" src="resources/play.png" />
+    <input id="id-classtext" title="Copy and paste into song" >
+        <!--div id="id-testscr"></div-->        
+    <div>
+      <div><span class="selecttxt">Text block position:</span>
+      <select id="id-seltxtpos">
+        <option value="topleft">txttopleft</option>
+        <option value="topcenter">txttopcenter</option>
+        <option value="topright">txttopright</option>
+        <option value="midleft">txtmidleft</option>
+        <option value="midcenter" selected>txtmidcenter</option>
+        <option value="midright">txtmidright</option>
+        <option value="botleft">txtbotleft</option>
+        <option value="botcenter">txtbotcenter</option>
+        <option value="botright">txtbotright</option>
+      </select>
+      </div>
+      <div><span class="selecttxt">Text block width:</span>
+      <select id="id-selwidth">
+        <option value="">(txt100pc)</option>
+        <option value="txt75pc">txt75pc</option>
+        <option value="txt66pc">txt66pc</option>
+        <option value="txt50pc">txt50pc</option>
+      </select>
+      <div><span class="selecttxt">Text layout:</span>
+      <select id="id-seltxtlayout">
+        <option value="txtleft">txtleft</option>
+        <option value="txtcenter" selected>txtcenter</option>
+        <option value="txtright">txtright</option>
+      </select>
+      <div><span class="selecttxt">BG file:</span>
+      <input type="text" id="id-selbgfile" value="" placeholder="select file">
+      </div>
+      <div><span class="selecttxt">BG style:</span>
+      <select id="id-selbgcolor">
+        <option value="bgimage">bgimage,file</option>
+        <option value="bgtile">bgtile,file</option>
+        <option value="bgblack" selected>bgblack</option>
+        <option value="bgwhite">bgwhite</option>
+        <option value="bgcornsilk">bgcornsilk</option>
+        <option value="bgmaroon">bgmaroon</option>
+        <option value="bgtan">bgtan</option>
+        <option value="bg1">bg1</option>
+        <option value="bg2">bg2</option>
+        <option value="bg3">bg3</option>
+        <option value="bg4">bg4</option>
+        <option value="bgfabric">bgfabric</option>
+        <option value="bgpaper">bgpaper</option>
+      </select>
+      </div>
+      <div><span class="selecttxt">Text colour:</span>
+      <select id="id-seltxtcolor">
+        <option value="txtwhite">txtwhite</option>
+        <option value="txtblack">txtblack</option>
+        <option value="txtcornsilk">txtcornsilk</option>
+        <option value="txtlime">txtlime</option>
+        <option value="txtwhiteinblack">txtwhiteinblack</option>
+        <option value="txtwhiteinnavy">txtwhiteinnavy</option>
+        <option value="txtcornsilkinblack">txtcornsilkinblack</option>
+        <option value="txtblackinwhite">txtblackinwhite</option>
+        <option value="txtblackincornsilk">txtblackincornsilk</option>
+        <option value="txtgreeninblack">txtgreeninblack</option>
+        <option value="txtblackingreen">txtblackingreen</option>
+        <option value="txtnavyinwhite">txtnavyinwhite</option>
+        <option value="notext">notext</option>
+      </select>
+      </div>
+      <div><span class="selecttxt">Font size:</span>
+      <select id="id-seltxtsize">
+        <option value="fontYnormal">fontYnormal</option>
+        <option value="fontYsmall">fontYsmall</option>
+        <!--option value="fontYsmallest">fontYsmallest</option-->
+      </select>
+      </div>
+      <div><span class="selecttxt">Font type:</span>
+      <select id="id-seltxtface">
+        <option value="fontXnormal">fontXnormal</option>
+        <option value="fontXnarrow">fontXnarrow</option>
+        <option value="fontserif">fontserif</option>
+        <option value="fontblack">fontblack</option>
+        <option value="fontslab">fontslab</option>
+      </select>
+      </div>
+    </div>
+    </div>
+      </div>
+    </form>
+        <button id="id-btnfonttags"><img title="Show/hide Font Tags" src="resources/xsettings.png" /> Show/Hide Font Tags</button><br>
+        <form id="id-fonttags">
+        <h3>Font Tags</h3>
+<p>In order to create simple powerpoints, HTML tags can be inserted in your text files as demonstrated<br>
+(use CI: builder to test and add more variation).<p>
+<table>
+<tr><th>HTML Tag</th><th>Effect</th></tr>
+<tr><td><pre>&lt;h1&gt;Heading 1&lt;/h1&gt;</pre></td><td class="pa"><h1>Heading 1</h1></td></tr>
+<tr><td><pre>&lt;h2&gt;Heading 2&lt;/h2&gt;</pre></td><td class="pa"><h2>Heading 2</h2></td></tr>
+<tr><td><pre>&lt;h3&gt;Heading 3&lt;/h3&gt;</pre></td><td class="pa"><h3>Heading 3</h3></td></tr>
+<tr><td><pre>&lt;var&gt;'Nunito' (rounded)
+font face&lt;/var&gt;</pre></td><td class="pa"><var>'Nunito' (rounded) font face</var></td></tr>
+<tr><td><pre>&lt;cite&gt;Serif font face&lt;/cite&gt;</pre></td><td class="pa"><cite>Serif font face</cite></td></tr>
+<tr><td><pre>&lt;strong&gt;Like Impact font
+&lt;/strong&gt;</pre></td><td class="pa"><strong>Like Impact font</strong></td></tr>
+<tr><td><pre>&lt;b&gt;Bold text&lt;/b&gt;</pre></td><td class="pa"><b>Bold text</b></td></tr>
+<tr><td><pre>&lt;i&gt;Italic text&lt;/i&gt;</pre></td><td class="pa"><i>Italic text</i></td></tr>
+<tr><td><pre>&lt;em&gt;Bold Italic&lt;/em&gt;</pre></td><td class="pa"><em>Bold Italic</em></td></tr>
+<tr><td><pre>&lt;small&gt;Text 10% smaller
+&lt;/small&gt;</pre></td><td class="pa"><small>Text 10% smaller</small></td></tr>
+<tr><td><pre>&lt;mark&gt;I am marked&lt;/mark&gt;</pre></td><td class="pa"><mark>I am marked</mark></td></tr>
+<tr><td><pre>&lt;small&gt;&lt;b&gt;Combined tags
+&lt;/b&gt;&lt;/small&gt;</pre></td><td class="pa"><small><b>Combined tags</b></small></td></tr>
+<!--tr><td><pre>&lt;T&gt;X&lt;/&gt;</pre></td><td class="pa"><></></td></tr-->
+</table>
+      <h3>Combining effects:</h3>
+      <p>Combine tags and even add class to get following:<br>
+      &lt;cite&gt;&lt;em class='fontserif'&gt;<cite><em class='fontserif'>Bold Italic (Serif)</em></cite>&lt;/em&gt;&lt;/cite&gt;
+      </p><br>
+      <cite>Classes include:</cite>
+      <ul>
+        <li>fontblack</li>
+        <li>fontserif</li>
+        <li>fontslab</li>
+      </ul>
+      <br>
+      <br>
+   </form>         
+  </div>
+
+    
+    <div id="id-helpsblock">
+      <div id="id-accordion">
+        <h3>FIRST THING</h3>
+        <div class="help">
+        <p>SET the Song Path (above console screen) <img src="resources/splfolder.jpg" /> </p>
+        <p>To create song files, view sample .txt files included with the package. Click around and experiment to discover features. Restart if you have real trouble.</p>
+        <p><b>Reserved Folders:</b> (case sensitive)<br>
+        - images (your images)<br>
+        - media (your music mp3* only)<br>
+        - programs (your saved progs)<br>
+        - sheets (future-lead sheets)<br>
+        - videos (your videos** - mp4 only)<br>
+        All other folders are treated as song books and show up in the selection Tabs (max 10).<br>
+        <i>* '.mp3' file extension lowercase, file name identical to songfile name<br>
+  eg. 'My Song.txt' My Song.mp3'<br>
+  **Only put mp3 files in 'media' folder.</i>
+        </p>
+        </div>
+        
+        <h3>Show/hide list</h3>
+        <div class="help">
+        <p>Use <span class="ui-state-default ui-corner-all">Show/hide list</span> to hide the tabbed songlist.<br>
+  Click on a song in the list ot type a few letters in the textbox next to it to select a song.<br><br>
+  Click <button>View Song</button> to view selected song immediately.<br><br>
+  The splash screen image can be changed in main settings. Place jpg files in the [yourpath]\images folder and name them 'splash.jpg', splash1.jpg, splash2.jpg or use the 'choose' for something else.  
+  </p>
+        </div>
+  
+        <h3>Program Tab</h3>
+        <div class="help">
+        <p>Use <button class="ui-state-default ui-corner-all"><i class="material-icons">&#xE063;</i></button> to add selected song to program<br>
+  You may also insert Splash, Blank, Slide (image) screens or an MP4 video into the program.<br><br>
+  Click <button class="ui-state-default ui-corner-all"><i class="material-icons">&#xE5D4;</i>&nbsp;<i class="material-icons">&#xE890;</i></button>
+  to show the next item in the program list.<br>
+  Clicking program line continues from that spot.<br>
+  Splash screen is shown when program completed<br>
+  [Reset] sets the line counter to zero so you can check the program and start over.
+  </p>
+        <p>Click the [Edit] button to edit the program. (change the order or mode)<br>
+  You can load a program from there.<br>
+  To save: copy and paste into Notepad and save as an ordinary text file.<br>
+  <br>
+  <b>Mode TKI:</b><br>
+  - [/]show title = 'T'<br>
+  - [/]karaoke = 'K' <br>
+  - [/]play immediately = 'I'<br>
+  '_' = mode item switch off
+  </p>
+        </div>
+        
+        <h3>Preview Tab</h3>
+        <div class="help">
+        <p>Display songs by clicking in the appropriate screen in the preview table OR...<br>
+  <span class="ui-widget ui-state-default ui-corner-all"></span><span class="ui-icon ui-icon-circle-triangle-e"></span> Click to show next screen of a song = follows ORDER.<br>
+  A line should be included in song .txt file eg. 'ORDER:123242' if song has choruses and bridges.<br>
+  If 'show title' checked ('T' in program mode), then first screen is the title screen (else 1st screen in ORDER).
+  <span  class="ui-widget ui-state-default ui-corner-all"></span><span class="ui-icon ui-icon-play"></span>
+  <i>If song has backing audio file, create screen timings (under Times tab), add the 'PLAY:...' line  to the song file, use the play
+  button to start the music and watch screens change automatically.</i></p>
+        </div>
+        
+        <h3>Times Tab</h3>
+        <div class="help">
+        <p>Songs with a backing track (karaoke mode) get there screen change times listed here. You can click a line to change the songs position while playing.<br>
+        You can also create/edit a list of timings here for your song.</p>
+        </div>
+        
+        <h3>Settings Tab</h3>
+        <div class="help">
+        <p>Click <button><img src="resources/xsettings.png" /></button> to toggle settings view.<br>
+        Here you can change various song viewer parameters.<br>
+        You can save them as defaults for next time you run this app. (See 'FIRST THING' for setting root folder)</p>
+        
+        <p>'CI:' Builder enables you to build a special set of display instructions to add to a verse in your song.(see 'Special Lyrics Commands' below)</p>
+        </div>
+        
+        <h3>Special Lyrics Commands</h3>
+        <div class="help">
+        <p>See sample song text files</p>
+        <p>Note the use of space and comma!</p>
+        <p><strong>FB: (Foreground/Background)</strong></p>
+  <p style="color:cornsilk">FB:<i>csscolor imagepath/imagefile.ext</i><br>
+  FB:<i>.cssclass imagepath/imagefile.ext</i></p>
+  <p>eg1:<br>
+  FB:black images/xmas/palmbg.jpg<br>
+  (Everybody Sing)<br>
+  Hosanna. Blessed be the Rock!<br>
+  <br>(Look up css colours on the web)</p>
+  
+  <p>eg2:<br>
+  FB:.txtblackinwhite images/xmas/palmbg.jpg<br>
+  (Everybody Sing)<br>
+  (dot)colorclass found in CI Builder
+  </p>
+  <p><strong>CI: (Classes/Image)</strong><br>
+  Use CI: Builder (under Settings)<br>
+  All parameters are predefined CSS classes (except for optional image file)<br>
+  Note use of comma<br>
+  MUST be single line in text file.</p>
+  <p style="color:cornsilk">CI:<i>bg-color text-position,<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;text-layout text-color font-height font-width,<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;'#' or imagepath/imagefile.ext</i><p>
+  <p>eg:<br>
+  CI:bgimage midcenter, txtcenter txtblackinwhite fontYnormal fontXnormal,black images/xmas/palmbg.jpg<br>
+  Hosanna. Blessed be the Rock!</p>
+      </div>
+  
+      <h3>HTML Tags in lyrics</h3>
+      <div id="id-tags" class="help">
+      In order to create simple powerpoints, HTML tags can be inserted in your text files as demonstrated<br>
+  See CI: builder (in Settings) for list of tags.
+      <!--ul>
+      <li>&lt;h1&gt;<h1>Heading 1</h1>&lt;/h1&gt;</li>
+      <li>&lt;h2&gt;<h2>Heading 2</h2>&lt;/h2&gt;</li>
+      <li>&lt;h3&gt;<h3>Heading 3</h3>&lt;/h3&gt;</li>
+      <li>&lt;var&gt;<var>'Nunito' (rounded) font face</var>&lt;/var&gt;</li>
+      <li>&lt;cite&gt;<cite>Serif font face</cite>&lt;/cite&gt;</li>
+      <li>&lt;b&gt;<b>Bold text</b>&lt;/b&gt;</li>
+      <li>&lt;i&gt;<i>Italic text</i>&lt;/i&gt;</li>
+      <li>&lt;small&gt;<small>Text 10% smaller</small>&lt;/small&gt;</li>
+      <li>&lt;em&gt; <em>Bold Italic</em>&lt;/em&gt;</li>
+      <li>&lt;strong&gt;<strong>Like Impact font</strong>&lt;/strong&gt;</li>
+      <li>&lt;mark&gt;<mark>I am marked</mark>&lt;/mark&gt;</li>
+      </ul-->
+      <!--h3>Combining effects:</h3><br>
+      &lt;h1&gt;&lt;p&gt;<h1><p>Heading 1 (Plain/Rounded)</p></h1>&lt;/p&gt;&lt;/h1&gt;<br>
+      Add class to get following:<br>
+      &lt;cite&gt;&lt;em class='fontserif'&gt;<cite><em class='fontserif'>Bold Italic (Serif)</em></cite>&lt;/em&gt;&lt;/cite&gt;
+      <br>
+      <cite>Classes include:</cite>
+      <ul>
+        <li>fontblack</li>
+        <li>fontserif</li>
+        <li>fontslab</li>
+      </ul-->
+      </div> 
+  
+      </div>
+    </div>  
+    </section>
+  </aside> <!-- songcontrol -->   
+
+
+<textarea id="id-textarea" ></textarea>
+
+
+<script src="js/jquery-2.1.4.js"></script>
+<script src="js/jquery-ui.js"></script>
+<script src="js/filelist.js"></script>
+<script src="js/songload.js"></script>
+<script src="js/console.js"></script>
+</body>
+</html>

@@ -1,0 +1,141 @@
+/*keep these here!!!*/
+html {
+	font-size:10vh;
+	line-height:1.2;
+}
+html, body {
+	padding: 0;
+	margin: 0;
+	background-color: #000000;
+	height: 100%;
+	margin: 0 0 0 0;
+}
+/* ALL DIV's 100%X100% 
+DIV {
+  color: white;
+  background-color:black;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}*/ 
+#id-sd1, #id-sd2, #id-sd3, #id-sd4, #id-sd5, #id-sd6, #id-sd7, #id-sd8, #id-sd9, #id-slide {
+/* <DIV>  display: table;*/
+  border: 0;
+  margin: 0;
+  padding: 0;
+  /*min-width: 100%;*/
+  /*min-height: 100%;*/
+  height: 100%;
+  display:flex;
+}
+h1 {
+	display: inline-block;
+}
+h2 {
+	display: inline-block;  
+ }
+h3 {
+	display: inline-block;  
+ }
+  
+/* #id-titleinfo {
+	vertical-align: middle;
+	height: 100%;
+	width: 100%;
+}
+#id-title {
+	margin-top: 5%;
+	height: 30%;
+	padding-top: 3%;
+	font-size: 1em;
+	text-align: center;
+}
+#id-info {
+	padding-top: 3%;
+	height:40%;
+	font-size: 0.4em;
+	line-height: 1.2;
+	text-align: center;
+} */
+/*end keep*/
+#id-dragme {
+	display: inline-block;
+	height: 14vh;
+	width: 80vw;
+	font-size: 4vh;
+	background-color: #888888;
+	border: 2px solid black;
+	-webkit-app-region: drag;
+}
+#id-scrdone {
+	display: inline-block;
+	border: 2px solid #0A0;
+	background-color: #888888;
+	font-size: 3vh;
+	text-align:center;
+	height: 6vh;
+	width: 12vw;
+	float: right;
+}
+#id-specs {
+	font-size: 2vh;
+}
+#id-scradjust {
+	height: 15vh;
+	/* font-size:1.5vh; */
+	/* line-height: 2.0vh; */
+	color: white;
+	background-color: #aaaaaa;
+	border: 2px solid yellow;
+}
+.bodyadjust { 
+	/*height: calc(90vh - 12px);*/
+	/*width: calc(100vw - 6px);*/
+	color: white;
+	text-align: center;
+	background-color: #333399; 
+	border: 3px solid violet;
+}
+.testmargin {
+	margin: 0 3% 0 3%;
+}
+.fontYnormal {
+	font-size: 1.0em;
+/* 	line-height: 1.2em; */
+}
+.fontYsmall {
+	font-size: 0.9em;
+/* 	line-height: 1.2em; */
+}
+/* colorincolor in P */
+.txtwhiteinblack {
+  color: white;
+  text-shadow: -2px -2px 0 black, 2px -2px 0 black, -2px 2px 0 black, 2px 2px 0 black;
+}
+.txtwhiteinnavy {
+  color: white;
+  text-shadow: -2px -2px 0 navy, 2px -2px 0 navy, -2px 2px 0 navy, 2px 2px 0 navy; 
+}
+.txtblackinwhite {
+  color: black;
+  text-shadow: -2px -2px 0 white, 2px -2px 0 white, -2px 2px 0 white, 2px 2px 0 white; 
+}
+.txtblackincornsilk {
+  color: black;
+  text-shadow: -2px -2px 0 cornsilk, 2px -2px 0 cornsilk, -2px 2px 0 cornsilk, 2px 2px 0 cornsilk; 
+}
+.txtcornsilkinblack {
+  color: cornsilk;
+  text-shadow: -2px -2px 0 black, 2px -2px 0 black, -2px 2px 0 black, 2px 2px 0 black; 
+}
+.txtgreeninblack {
+  color: #0f0;
+  text-shadow: -2px -2px 0 black, 2px -2px 0 black, -2px 2px 0 black, 2px 2px 0 black; 
+}
+.txtblackingreen {
+  color: black;
+  text-shadow: -2px -2px 0 #0f0, 2px -2px 0 #0f0, -2px 2px 0 #0f0, 2px 2px 0 #0f0; 
+}
+.txtnavyinwhite {
+  color: navy;
+  text-shadow: -2px -2px 0 white, 2px -2px 0 white, -2px 2px 0 white, 2px 2px 0 white; 
+}

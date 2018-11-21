@@ -1,0 +1,46 @@
+{
+  "name": "Song Viewer",
+  "description": "Chrome song viewer app.",
+  "version": "0.2",
+  "manifest_version": 2,
+
+  "app": {
+    "background": {
+      "scripts": ["js/background.js"]
+    }
+  },
+
+  "content_scripts": [
+    {
+      "matches": ["http://www.google.com/*", "jquery-ui-1.11.4.*/*", "jqifx/*", "jqitabs/*", "resources/*"]
+    }
+  ],
+
+  "file_browser_handlers": [
+    {
+      "id": "upload",
+      "default_title": "Open text file", 
+      "file_filters": [
+        "filesystem:*.jpg",
+        "filesystem:*.jpeg",
+        "filesystem:*.png",
+        "filesystem:*.mp4",
+        "filesystem:*.mp3",
+        "filesystem:*.ogg",
+        "filesystem:*.txt"
+      ]
+    }
+  ],
+
+  "permissions" : [
+    "fileBrowserHandler",
+    {"fileSystem": ["retainEntries", "directory"]} ,
+    "storage"
+  ],
+
+  "icons": { 
+    "16": "view-16.png",
+    "48": "view-48.png",
+    "128": "view-128.png"
+ }
+}

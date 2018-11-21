@@ -1,0 +1,169 @@
+body {
+  color: white;
+  margin: 10px;  
+}
+section {
+  display: block;
+}
+button {
+  color: white;
+  background-color: #333;
+}
+button:hover {
+  background-color: #777;
+}
+select {
+  background-color: #222;
+  color: white;
+  margin: 2px 0 2px 0;
+}
+#id-sd1, #id-sd2, #id-sd3, #id-sd4, #id-sd5, #id-sd6, #id-sd7, #id-sd8, #id-sd9, #id-slide {
+	/* <DIV>  display: table;*/
+	border: 0;
+	margin: 0;
+	padding: 0;
+/* 	min-width: 100%; */
+/* 	min-height: 100%; */
+	height: 100%;
+	display:flex;
+}
+#id-settings {
+  display: none;
+}
+#id-builder {
+  display: none;
+}
+#id-fonttags {
+  display: none;
+}
+/* #id-titleinfo {
+  height: 100%;
+  text-align: center;
+}*/
+#id-consolescreen {
+    /* include padding */
+    padding: 10px;
+    border-radius: 10px;
+    background: linear-gradient(gray, black 60% );
+    overflow: hidden;
+}
+#id-consolescreen h1, id-previewtable h1, #id-tags h1 {
+  display: inline-block;
+}
+#id-consolescreen h2, id-previewtable h2, #id-tags h2  {
+  display: inline-block;
+}
+#id-consolescreen h3, id-previewtable h3, #id-tags h3 {
+  display: inline-block;
+}
+#id-s_transport {
+  width: 100%;
+}
+#id-textarea {
+  display:none;
+}
+#id-progeditblock{
+  display:none;
+}
+#id-icons {
+	margin: 0;
+	padding: 0;
+}
+#id-icons li {
+	margin: 2px;
+	position: relative;
+	padding: 4px 0;
+	cursor: pointer;
+	float: left;
+	list-style: none;
+}
+#id-icons span.ui-icon {
+	float: left;
+	margin: 0 4px;
+}
+
+#id-songlist {
+  display:block;
+  background-color: #000000;
+  overflow-y: auto;
+}
+
+#id-songlist li:hover {
+  background-color: #444444;
+  font-weight: bold;
+}
+.textonly {
+  list-style-image: url('xfiletxt.png');
+}
+.play {
+  list-style-image: url('xfileplay.png');
+}
+.movie {
+  list-style-image: url('xfilemovie.png');
+}
+#id-timestable td,th {
+  overflow: hidden;
+}
+#id-timestable td {
+	cursor: pointer;
+}
+#id-programme td,th {
+  overflow: hidden;
+}
+#id-programme td {
+	cursor: pointer;
+}
+.preview {
+  color: white;
+  background-color: black;
+}
+
+#id-previewtable tr {
+  width: 100%;
+}
+
+#id-loading {
+   display: block;
+   opacity: 0.7;
+   background-color: #555;
+}
+
+#id-loading-image {
+  position: absolute;
+  top: 5px;
+  left: 70px;
+  z-index: 100;
+}
+/* colorincolor in P */
+.txtwhiteinblack {
+  color: white;
+  text-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black, 1px 1px 0 black;
+}
+.txtwhiteinnavy {
+  color: white;
+  text-shadow: -1px -1px 0 navy, 1px -1px 0 navy, -1px 1px 0 navy, 1px 1px 0 navy; 
+}
+.txtblackinwhite {
+  color: black;
+  text-shadow: -1px -1px 0 white, 1px -1px 0 white, -1px 1px 0 white, 1px 1px 0 white; 
+}
+.txtblackincornsilk {
+  color: black;
+  text-shadow: -1px -1px 0 cornsilk, 1px -1px 0 cornsilk, -1px 1px 0 cornsilk, 1px 1px 0 cornsilk; 
+}
+.txtcornsilkinblack {
+  color: cornsilk;
+  text-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black, 1px 1px 0 black; 
+}
+.txtgreeninblack {
+  color: #0f0;
+  text-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black, 1px 1px 0 black; 
+}
+.txtblackingreen {
+  color: black;
+  text-shadow: -1px -1px 0 #0f0, 1px -1px 0 #0f0, -1px 1px 0 #0f0, 1px 1px 0 #0f0; 
+}
+.txtnavyinwhite {
+  color: navy;
+  text-shadow: -1px -1px 0 white, 1px -1px 0 white, -1px 1px 0 white, 1px 1px 0 white; 
+}

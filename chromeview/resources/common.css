@@ -1,0 +1,531 @@
+/*
+  font-family: "Roboto", Helvetica, Arial, sans-serif;
+  font-family: "Roboto Condensed", "Arial Narrow", sans-serif;
+  font-family: "Roboto Slab", Impact, sans-serif;  //(no italic ... <i>==<em>)
+  font-family: "Roboto Black", Charcoal, sans-serif;   //(no bold ... <b>==<strong>)
+  font-family: "Droid Serif", Georgia, Times, serif;
+*/
+/* "Roboto Condensed" */
+/* Normal */
+@font-face {
+	font-family: "Roboto Condensed";
+	font-style: normal;
+	font-weight: 400;
+	src: url("fonts/Roboto-Condensed.ttf") format('truetype');
+}
+@font-face {
+	font-family: "Roboto Condensed";
+	font-style: italic;
+	font-weight: 400;
+	src: url("fonts/Roboto-CondensedItalic.ttf") format('truetype');
+}
+
+/* Bold */
+@font-face {
+	font-family: "Roboto Condensed";
+	font-style: normal;
+	font-weight: bold;
+	src: url("fonts/Roboto-BoldCondensed.ttf") format('truetype');
+}
+@font-face {
+	font-family: "Roboto Condensed";
+	font-style: italic;
+	font-weight: bold;
+	src: url("fonts/Roboto-BoldCondensedItalic.ttf") format('truetype');
+}
+
+/* "Roboto" */
+/* Normal */
+@font-face {
+	font-family: "Roboto";
+	src: url("fonts/Roboto-Regular.ttf") format('truetype');
+	font-style: normal;
+	font-weight: 400;
+}
+@font-face {
+	font-family: "Roboto";
+	src: url("fonts/Roboto-Italic.ttf") format('truetype');
+	font-style: italic;
+	font-weight: 400;
+}
+
+/* Bold */
+@font-face {
+	font-family: "Roboto";
+	src: url("fonts/Roboto-Bold.ttf") format('truetype');
+	font-style: normal;
+	font-weight: bold;
+}
+@font-face {
+	font-family: "Roboto";
+	src: url("fonts/Roboto-BoldItalic.ttf") format('truetype');
+	font-style: italic;
+	font-weight: bold;
+}
+
+/* "Roboto Slab" */
+/* Normal */
+@font-face {
+	font-family: "Roboto Slab";
+	src: url("fonts/RobotoSlab-Regular.ttf") format('truetype');
+	font-style: normal;
+	font-weight: 400;
+}
+
+/* Bold
+@font-face {
+	font-family: "Roboto Slab";
+	src: url("fonts/RobotoSlab-Bold.ttf") format('truetype');
+	font-style: normal;
+	font-weight: bold;
+} */
+
+/* "Roboto Black" */
+@font-face {
+	font-family: "Roboto Black";
+	src: url("fonts/Roboto-Black.ttf") format('truetype');
+	font-style: normal;
+	font-weight: 400;
+}
+@font-face {
+	font-family: "Roboto Black";
+	src: url("fonts/Roboto-BlackItalic.ttf") format('truetype');
+	font-style: italic;
+	font-weight: 400;
+}
+
+/* "Droid Serif" */
+/* Normal */
+@font-face {
+	font-family: "Droid Serif";
+	src: url("fonts/DroidSerif-Regular.ttf") format('truetype');
+	font-style: normal;
+	font-weight: 400;
+}
+@font-face {
+	font-family: "Droid Serif";
+	src: url("fonts/DroidSerif-Italic.ttf") format('truetype');
+	font-style: italic;
+	font-weight: 400;
+}
+
+/* Droid Bold */
+@font-face {
+	font-family: "Droid Serif";
+	src: url("fonts/DroidSerif-Bold.ttf") format('truetype');
+	font-style: normal;
+	font-weight: bold;
+}
+@font-face {
+	font-family: "Droid Serif";
+	src: url("fonts/DroidSerif-BoldItalic.ttf") format('truetype');
+	font-style: italic;
+	font-weight: bold;
+}
+/* Rounded */
+@font-face {
+	font-family: "Nunito";
+	src: url("fonts/Nunito-Regular.ttf") format('truetype');
+	font-style: normal;
+	font-weight: normal;
+}
+@font-face {
+	font-family: "Nunito";
+	src: url("fonts/Nunito-Bold.ttf") format('truetype');
+	font-style: normal;
+	font-weight: bold;
+}
+
+@font-face {
+  font-family: 'Material Icons';
+  font-style: normal;
+  font-weight: 400;
+  src: url("fonts/MaterialIcons-Regular.ttf") format('truetype');
+}
+.material-icons {
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+   /*font-size: 24px;  Preferred icon size */
+  display: inline-block;
+  padding: 0 1px;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+  /* Support for all WebKit browsers. */
+  -webkit-font-smoothing: antialiased;
+  /* Support for Safari and Chrome. */
+  text-rendering: optimizeLegibility;
+
+  /* Support for Firefox. */
+  -moz-osx-font-smoothing: grayscale;
+
+  /* Support for IE. */
+  font-feature-settings: 'liga';
+}
+/* .material-icons.md-18 { font-size: 18px; }
+.material-icons.md-24 { font-size: 24px; }
+.material-icons.md-36 { font-size: 36px; } */
+.material-icons.md-dark { color: rgba(0, 0, 0, 0.54); }
+.material-icons.md-dark.md-inactive { color: rgba(0, 0, 0, 0.26); }
+
+.material-icons.md-light { color:rgba(255, 255, 255, 1); }
+.material-icons.md-light.md-inactive { color: rgba(255, 255, 255, 0.3); }
+
+#id-ss1, #id-ss2, #id-ss3, #id-ss4, #id-ss5, #id-ss6, #id-ss7, #id-ss8, #id-ss9, #id-stest {
+  padding: 0;
+}
+#id-titleinfo {
+	height: 100%;
+	background-color:black;
+}
+#id-title {
+	margin-top: 5%;
+	height: 30%;
+	padding-top: 3%;
+	font-size: 1em;
+	text-align: center;
+}
+#id-info {
+	padding-top: 3%;
+	height:40%;
+	font-size: 0.4em;
+	text-align: center;
+}
+#id-notearea {
+  position:static;
+  width:500px;
+  height:320px; 
+  color: #eeb;
+  display: inline-block;
+/*  float: left;
+  resize: vertical;*/
+}
+.sideline {
+  width:1px;
+  height: 200px;
+  margin-top:20px;
+  background-color:rgb(158, 80, 61);
+  display:inline-block;
+  vertical-align:top;
+}  
+
+/*  <P> display: table-cell;
+  table-call accepts padding but not margin 
+}
+*/
+.fontXnormal { 
+	font-family: Roboto; 
+	/* color: white; GET FROM outer element */
+}
+.fontXrounded { 
+	font-family: Nunito; 
+	/* color: white; GET FROM outer element */
+}
+.fontXnarrow { 
+	font-family: "Roboto Condensed"; 
+	/* color: white; GET FROM outer element */
+}
+.fontserif {
+	font-family: "Droid Serif";
+}
+.fontblack {
+	font-family: "Roboto Black";
+}
+.fontslab {
+	font-family: "Roboto Slab";
+}
+h1, h2, h3 {
+	font-family: "Droid Serif";
+	margin:0;
+	padding: 0.3em 0 0.2em 0;
+	display: block;
+}
+h1 {
+	font-size: 1.2em;
+/* 	line-height: 1.2em; */
+	font-weight: bold;
+}
+h2 {
+	font-size: 1.0em;
+/* 	line-height: 1.2em; */
+	font-weight: bold;
+}
+h3 {
+	font-size: 1.0em;
+/* 	line-height: 1.2em; */
+	font-weight: normal;
+	font-style: oblique;
+}
+p {
+	margin:0;
+	padding:0;
+}
+dl {
+	-webkit-margin-before: 0.5em;
+	-webkit-margin-after: 0.5em;
+}
+b {
+	font-size: 1.0em;
+	font-weight: bold;
+}
+i {
+	font-size: 1.0em;
+	font-style: italic;
+}
+cite {
+	font-family: "Droid Serif";
+	font-size: 1.0em;
+/* 	line-height: 1.2em; */
+	font-style: normal;
+	display: inline-block;
+}
+var {
+	font-family: "Nunito";
+	font-size: 1.0em;
+/* 	line-height: 1.2em; */
+	font-style: normal;
+	display: inline-block;
+}
+small {
+	font-size: 0.8em;
+/* 	line-height: 1.2em; */
+	display: inline-block;
+	padding: 0;
+}
+em {
+	font-size: 1.0em;
+	font-style:italic;
+	font-weight: bold;
+}
+strong {
+	font-family: "Roboto Slab";
+	font-size: 1.0em;
+/* 	line-height: 1.2em; */
+	font-style:normal;
+	font-weight: bold;
+}
+mark {
+	font-size: 1.0em;
+/* 	line-height: 1.2em; */
+	color: white;
+	background-color: #08A;
+}
+.inline {
+	display: inline-block;
+}
+.block {
+	display: block;
+}
+.floatleft {
+	float: left;
+	display: block;
+}
+.floatright {
+	float: right;
+}
+.space {
+	display: inline-block;
+	width:60px;
+	height: 1em;
+	background-color: transparent;
+}
+.blank {
+	border: 0;
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	height: 100%;
+	background-color: #000000;
+	background-image: url("");
+}
+/*.splash {
+  border: 0;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+	background-color: #000000;
+  background-size: 100% 100%;
+  background-image: url("splash.jpg");
+}*/
+.tiplain {
+	color: white;
+	background-color: #000;
+	font-family: "Droid Serif", Georgia, serif; 
+}
+.titlegreen {
+	color: white;
+	background-color: #050;
+	font-family: "Droid Serif", Georgia, serif;
+}
+.infogreen {
+	color: #DDD;
+	background-color: #030;
+	font-family: "Droid Serif", Georgia, serif; 
+}
+.titleblue {
+	color: white;
+	background-color: MediumBlue;
+	font-family: "Droid Serif", Georgia, serif; 
+}
+.infoblue {
+	color: #eee;
+	background-color: DarkBlue;
+	font-family: "Droid Serif", Georgia, serif; 
+}
+.bg0 {
+	background-image: url("");
+}
+.bg1 {
+	background-image: url("bg1.jpg");
+	background-size: 100% 100%;
+}
+.bg2 {
+	background-image: url("bg2.jpg");
+	background-size: 100% 100%;
+}
+.bg3 {
+	background-image: url("bg3.jpg");
+	background-size: 100% 100%;
+}
+.bg4 {
+	background-image: url("bg4.jpg");
+	background-size: 100% 100%;
+}
+
+
+/* P CLASSES*/
+.txtcenter {
+	text-align: center;
+	margin: 0 3% 0 3%;
+}
+.txtleft {
+	text-align: left;
+	margin: 0 2% 0 4%;
+}
+.txtright {
+	text-align: right;
+	margin: 0 4% 0 2%;
+}
+.txttop {
+	margin: 2% 3% 0 3%;
+}
+.notext {
+	visibility: hidden;
+}
+.midleft {
+	align-items: center;
+	justify-content: flex-start;
+}
+.midcenter {
+	align-items: center;
+	justify-content: center;
+}
+.midright {
+	align-items: center;
+	justify-content: flex-end;
+}
+.topleft {
+	align-items: flex-start;
+	justify-content: flex-start;
+}
+.topcenter {
+	align-items: flex-start;
+	justify-content: center;
+}
+.topright {
+	align-items: flex-start;
+	justify-content: flex-end;
+}
+.botleft {
+	align-items: flex-end;
+	justify-content: flex-start;
+}
+.botcenter {
+	align-items: flex-end;
+	justify-content: center;
+}
+.botright {
+	align-items: flex-end;
+	justify-content: flex-end;
+}
+/* color in P */
+.txtwhite {
+  color: white;
+}
+.txtblack {
+  color: black;
+}
+.txtcornsilk {
+  color: cornsilk;
+}
+.txtlime {
+  color: lime;
+}
+/* bgcolor in DIV */
+.bgimage { /* DIV CLASS*/
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}
+.bgtile { /* DIV CLASS*/
+  background-repeat: repeat;
+}
+.bgfabric {
+  background-image: url("fabric2.jpg");
+  background-repeat: repeat;
+}
+.bgpaper {
+  background-image: url("paper1.jpg");
+  background-repeat: repeat;
+}
+.bgblack {
+  background-color: black;
+}
+.bgwhite {
+  background-color: white;
+}
+/* bgcolor in DIV */
+.bgcornsilk {
+    background-color: cornsilk;
+}
+.bgmaroon {
+    background-color: maroon;
+}
+.bgnavy {
+    background-color: navy;
+}
+.bgteal {
+    background-color: teal;
+}
+.bgtan {
+    background-color: tan;
+}
+.txt75pc {
+  width: 75%;
+}
+.txt66pc {
+  width: 66%;
+}
+.txt50pc {
+  width: 50%;
+}
+/*
+.txt75left {
+  margin: 0 25% 0 2%;
+}
+.txt75right {
+  margin: 0 2% 0 25%;
+}
+.txt66right {
+  margin: 0 2% 0 33%;
+}
+.txt50left {
+  margin: 0 50% 0 3%;
+}
+.txt50right {
+  margin: 0 2% 0 50%;
+}*/
